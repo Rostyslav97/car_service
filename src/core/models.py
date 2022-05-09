@@ -18,6 +18,7 @@ class Defect(models.Model):
     price = models.PositiveIntegerField("Price", help_text = "Put amount in hrn")
     created_at = models.DateTimeField(auto_now_add=True)
     service_arrival_time = models.DateTimeField("Arrival")
+    image = models.ImageField(null=True, blank=True)
 
     STATUS_CHOICES = (
         ('D', 'Done'),
