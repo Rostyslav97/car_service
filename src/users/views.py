@@ -1,6 +1,10 @@
 from rest_framework.generics import CreateAPIView
-from users.models import User
 from users.serializers import UserSerializer
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
+
 
 
 class CreateUserAPI(CreateAPIView):

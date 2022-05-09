@@ -34,7 +34,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(null=True, max_length=30, blank=True, unique=True)
     username = models.CharField(max_length=255, null=True, blank=True)
     fullname = models.CharField(max_length=100, null=True, blank=True)
-    sex = models.BooleanField(null=True, blank=True, default=None)
     car = models.CharField(max_length=50, null=True, blank=True, default=None)
 
     is_active = models.BooleanField(default=False)
