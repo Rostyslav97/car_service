@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView
+from core.models import Defect
+from core.serializers import DefectSerializer
 
-# Create your views here.
+
+class ListDefectAPI(ListAPIView):
+    queryset = Defect.objects.all()
+    serializer_class = DefectSerializer
+    

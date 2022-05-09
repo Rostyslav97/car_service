@@ -3,5 +3,5 @@ from users.views import CreateUserAPI
 
 
 urlpatterns = [
-    path("signup", CreateUserAPI.as_view()),
+    path("signup/", CreateUserAPI.as_view()),
 ]
