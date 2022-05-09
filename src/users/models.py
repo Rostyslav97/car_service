@@ -4,22 +4,21 @@ from django.db import models
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, phone_number, username=None, password=None, **kwargs):
+    def create_user(self, phone_number, password=None, **kwargs):
         if not phone_number:
             raise ValueError("Phone number is required")
         if not password:
             raise ValueError("Password is required")
        
         phone_number = self.model(phone_number=phone_number)
-        user = self.model(phone_number=phone_number, username=username, **kwargs)
+        user = self.model(phone_number=phone_number, **kwargs)
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, phone_number, username=None, password=None, **kwargs):
+    def create_superuser(self, phone_number, password=None, **kwargs):
         superuser_payload = {
             "phone_number": phone_number,
-            "username": username,
             "password": password,
             "is_superuser": True, 
             "is_staff": True, 
@@ -32,7 +31,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     """Custom User model."""
 
     phone_number = models.CharField(null=True, max_length=30, blank=True, unique=True)
-    username = models.CharField(max_length=255, null=True, blank=True)
     fullname = models.CharField(max_length=100, null=True, blank=True)
     car = models.CharField(max_length=50, null=True, blank=True, default=None)
 
