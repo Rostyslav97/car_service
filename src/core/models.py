@@ -11,8 +11,9 @@ class City(models.Model):
 
 class Defect(models.Model):
     customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.DO_NOTHING)
+    city = models.ForeignKey(City, on_delete=models.DO_NOTHING, null=False, blank=False)
     adress = models.TextField("Adress")
+    car = models.CharField(max_length=40)
     description = models.TextField("Description")
     price = models.PositiveIntegerField("Price", help_text = "Put amount in hrn")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -24,5 +25,4 @@ class Defect(models.Model):
     )
 
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='N')
-
-
+    

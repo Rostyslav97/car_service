@@ -7,3 +7,9 @@ class DefectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Defect
         exclude = ("id", "status")
+
+
+class DefectCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Defect
+        exclude = ("id", "status")
