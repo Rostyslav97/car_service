@@ -1,3 +1,12 @@
 from django.contrib import admin
+from core.models import City, Defect
 
-# Register your models here.
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Defect)
+class DefectAdmin(admin.ModelAdmin):
+    list_display = ("description", "adress", "customer")
