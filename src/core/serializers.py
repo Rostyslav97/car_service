@@ -10,6 +10,7 @@ class DefectSerializer(serializers.ModelSerializer):
 
 
 class DefectCreateSerializer(serializers.ModelSerializer):
+    customer = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Defect
         exclude = ("id", "status")
